@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,6 +27,17 @@ public class PlayerController : MonoBehaviour
 
 
 
+        }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+
+        if (collision.gameObject.name == "EnemyBullet(Clone)")
+        {
+            print("DIED");
+            // print("collision detected");
+            //SceneManager.LoadScene("MenuScreen");
         }
     }
 }

@@ -20,8 +20,8 @@ public class ScoreManager : MonoBehaviour
     public static void updateScore()
     {
 
-    //    score++;
-    //    ScoreText.text = "Score:" + score;
+        score = score + 100;
+        ScoreText.text = "Score:" + score;
     }
 
     public static int GetScore()

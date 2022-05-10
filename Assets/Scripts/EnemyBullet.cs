@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
-    float bulletMovementSpeed = 500f;
+    float bulletMovementSpeed = -75f;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(transform.up * bulletMovementSpeed);
     }
+
     private void Update()
     {
         IsOffscreen();
@@ -20,25 +21,20 @@ public class Bullet : MonoBehaviour
     private void IsOffscreen()
     {
         //min values are like 15/-15 and 10/-10
-        if (transform.position.y > 15)
+        if (transform.position.y < -10)
         {
             Destroy(this.gameObject);
         }
+
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.TryGetComponent(out IShootable hit))
+
+        if (collision.gameObject.name == "Bullet(Clone)")
         {
-            hit.Shot();
             Destroy(this.gameObject);
         }
 
-       else if (other.gameObject.name == "EnemyBullet(Clone)")
-        {
-            Destroy(this.gameObject);
-        }
 
     }
-
 }
-
