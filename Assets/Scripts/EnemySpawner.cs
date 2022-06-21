@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float columnCount = 12;
     float xSpawnStart = -8;
     float ySpawnStart = 1.5f;
+    float spawnGap = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +20,6 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemies()
     {
         SpawnEnemy();
-
-
     }
 
     public void SpawnEnemy()
@@ -30,10 +29,8 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int j = 0; j < columnCount; j++)
             {
-
-                Vector2 location = new Vector2(xSpawnStart + i, ySpawnStart + j);
+                Vector2 location = new Vector2(xSpawnStart + (i*spawnGap), ySpawnStart + j);
                 GameObject Enemy = Instantiate(Resources.Load("Enemy"), location, Quaternion.identity, this.transform) as GameObject;
-
             }
         }
     }
