@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour, IShootable
        // rb.velocity = new Vector2(1, 0) * enemyMovementSpeed;
         dirX = -1f;
         enemyMovementSpeed = 2f;
-        InvokeRepeating("Shoot", 0, 2);
+        InvokeRepeating("Shoot", 0, Random.Range(3,20));
     }
 
     public void Shot()

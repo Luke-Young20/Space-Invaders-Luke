@@ -11,7 +11,7 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(transform.up * bulletMovementSpeed);
+        rb.AddForce(transform.up * (bulletMovementSpeed * Random.Range(1f,2f)));
     }
 
     private void Update()
